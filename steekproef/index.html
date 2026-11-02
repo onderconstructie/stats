@@ -1697,6 +1697,13 @@ async function kiesAntwoorden(file) {
   try {
     const t = await bestandNaarTabel(file, 'auto', 'antwoorden');
     R.fout.ant = null;
+    // Een steekproef uit stap 2 van deze tool (met de kolom status) hoort bij "je eigen steekproef": daar telt de status mee
+    // (wie niet antwoordde of buiten de doelgroep valt). Anders zou elke getrokken rij als antwoord meetellen.
+    let naarEigen = false;
+    if (state.modus === 'analyse' && !t.kolommen.includes('gewicht_eind') && ['gewicht', 'ontwerp_groep', 'ontwerp_cluster', 'ontwerp_N1', 'status'].every(k => t.kolommen.includes(k))) {
+      const s = leeg(); s.modus = 'eigen'; s.stap = 3; state = s; naarEigen = true;
+      R = { pop:null, respons:null, steek:null, ant:null, weeg:null, sim:null, fout:{} };
+    }
     if (state.modus === 'analyse') { R.antTabel = t; state.bestand = { naam:t.naam, rijen:t.N, kolommen:t.kolommen.length };
       // Een bestand uit deze tool (stap 3) wordt meteen herkend.
       const g = ['gewicht_eind', 'gewicht'].find(k => t.kolommen.includes(k)) || t.kolommen.find(k => /gewicht|weight|^w$/i.test(k));
@@ -1711,7 +1718,7 @@ async function kiesAntwoorden(file) {
       if (!t.kolommen.includes(state.status.kol)) state.status.kol = t.kolommen.includes('status') ? 'status' : '';
       bouwEigenAnt();
     }
-    save(); render(); toast(`${nf(t.N)} rijen ingelezen`);
+    save(); render(); toast(naarEigen ? `Een steekproef uit deze tool: ${nf(t.N)} rijen ingelezen bij je eigen steekproef, met de status` : `${nf(t.N)} rijen ingelezen`);
   } catch (e) { R.fout.ant = e && e.message ? e.message : 'Dit bestand kan ik niet lezen.'; render(); }
 }
 function statusWaarden() {
@@ -1856,7 +1863,7 @@ function render() {
   $('vb-bar').hidden = m !== 'voorbeeld';
   if (!m) return;
   $('werk-titel').textContent = m === 'voorbeeld' ? 'Voorbeeld: sport en vrijwilligerswerk' : m === 'analyse' ? (state.bestand ? state.bestand.naam : 'Bestand met gewichten') : (state.bestand ? state.bestand.naam : 'Je eigen steekproef');
-  $('werk-sub').textContent = m === 'voorbeeld' ? 'Fictieve populatie van ' + nf(89047) + ' volwassenen' : m === 'analyse' ? 'Analyse van een steekproef met gewichten' : (state.bestand ? nf(state.bestand.rijen) + ' rijen' + (R.pop ? '' : ' · niet meer ingelezen') : 'Nog geen bestand');
+  $('werk-sub').textContent = m === 'voorbeeld' ? 'Fictieve populatie van ' + nf(89047) + ' volwassenen' : m === 'analyse' ? 'Analyse van een steekproef met gewichten' : (state.bestand ? nf(state.bestand.rijen) + ' rijen' + (R.pop ? '' : ' · niet meer ingelezen') : state.antBestand ? 'Ingevulde steekproef: ' + state.antBestand.naam : 'Nog geen bestand');
   if (!open(state.stap)) state.stap = [4, 3, 2, 1].find(s => open(s) && s <= state.stap) || [1, 2, 3, 4].find(open) || 1;
   renderStappen();
   renderPaneel();
