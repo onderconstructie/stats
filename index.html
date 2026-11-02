@@ -75,8 +75,8 @@
         }
 
         .logo svg {
-            width: 80px;
-            height: 80px;
+            width: 56px;
+            height: 56px;
         }
 
         .site-title {
@@ -220,6 +220,10 @@
             transition: all 0.2s;
         }
 
+.footer-badge + .footer-badge {
+            margin-left: 0.5rem;
+        }
+
         .footer-badge a {
             color: inherit;
             text-decoration: none;
@@ -228,7 +232,7 @@
         .footer-badge .dot {
             width: 6px;
             height: 6px;
-            background: #f97316;
+            background: var(--accent);
             border-radius: 50%;
             transition: background 0.2s;
         }
@@ -250,7 +254,12 @@
         /* Responsive */
         @media (max-width: 640px) {
             .header {
-                padding: 2rem 1.5rem 3rem;
+                padding: 3.75rem 1.5rem 2.5rem;
+            }
+
+            .back-link {
+                top: 1.25rem;
+                left: 1.25rem;
             }
 
             .site-title {
@@ -325,7 +334,7 @@
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">Steekproef</h3>
-                    <p class="project-desc">Trek een eerlijke steekproef, ook in trappen, weeg de antwoorden en zie hoe zeker je resultaat is.</p>
+                    <p class="project-desc">Trek een eerlijke steekproef, weeg de antwoorden en zie hoe zeker je resultaat is.</p>
                 </div>
                 <div class="project-arrow">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -351,7 +360,7 @@
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">Steekproefcalculator</h3>
-                    <p class="project-desc">Bereken hoeveel respondenten je nodig hebt. Met uitleg over betrouwbaarheid en foutmarge.</p>
+                    <p class="project-desc">Snel: hoeveel antwoorden heb je nodig? Met uitleg over betrouwbaarheid en foutmarge.</p>
                 </div>
                 <div class="project-arrow">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -366,6 +375,9 @@
         <div class="footer-badge">
             <span class="dot"></span>
             <a href="https://www.linkedin.com/in/bartel-volckaert-8a96842/">contact</a>
+        </div>
+        <div class="footer-badge">
+            <a href="/privacy/">privacy</a>
         </div>
     </footer>
 </body>

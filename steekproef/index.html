@@ -5,14 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Steekproef – Onder Constructie</title>
 <meta name="description" content="Trek een eerlijke steekproef, weeg de antwoorden en zie hoe zeker je resultaat is. Met groepen, clusters en twee trappen, alles op je eigen toestel.">
-<meta name="oc:groep" content="projecten">
 <meta name="oc:labels" content="">
     <meta name="oc:pdca" content="check">
-<meta name="oc:kort" content="Trek eerlijk, weeg juist, weet hoe zeker je bent.">
-<meta name="oc:volgorde" content="76">
+<meta name="oc:kort" content="Trek een eerlijke steekproef, weeg de antwoorden en zie hoe zeker je resultaat is.">
 <meta name="oc:opslag" content="steekproef.v1">
 <meta name="theme-color" content="#ffffff">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='18' fill='%23f8fafc' stroke='%23e2e8f0' stroke-width='1.5'/%3E%3Ccircle cx='11.5' cy='13' r='2.6' stroke='%2394a3b8' stroke-width='1.3'/%3E%3Ccircle cx='17.2' cy='13' r='2.6' fill='%2310b981'/%3E%3Ccircle cx='22.9' cy='13' r='2.6' stroke='%2394a3b8' stroke-width='1.3'/%3E%3Ccircle cx='28.6' cy='13' r='2.6' stroke='%2394a3b8' stroke-width='1.3'/%3E%3Ccircle cx='11.5' cy='20' r='2.6' stroke='%2394a3b8' stroke-width='1.3'/%3E%3Ccircle cx='17.2' cy='20' r='2.6' stroke='%2394a3b8' stroke-width='1.3'/%3E%3Ccircle cx='22.9' cy='20' r='2.6' stroke='%2394a3b8' stroke-width='1.3'/%3E%3Ccircle cx='28.6' cy='20' r='2.6' fill='%2310b981'/%3E%3Ccircle cx='11.5' cy='27' r='2.6' fill='%2310b981'/%3E%3Ccircle cx='17.2' cy='27' r='2.6' stroke='%2394a3b8' stroke-width='1.3'/%3E%3Ccircle cx='22.9' cy='27' r='2.6' fill='%23047857'/%3E%3Ccircle cx='28.6' cy='27' r='2.6' stroke='%2394a3b8' stroke-width='1.3'/%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='18' fill='%23f8fafc' stroke='%23e2e8f0' stroke-width='1.5'/%3E%3Crect x='9' y='9' width='10' height='10' rx='2.5' fill='%23f1f5f9' stroke='%23cbd5e1'/%3E%3Crect x='21' y='9' width='10' height='10' rx='2.5' fill='%23d1fae5' stroke='%2310b981'/%3E%3Crect x='9' y='21' width='10' height='10' rx='2.5' fill='%23d1fae5' stroke='%2310b981'/%3E%3Crect x='21' y='21' width='10' height='10' rx='2.5' fill='%23f1f5f9' stroke='%23cbd5e1'/%3E%3Ccircle cx='24' cy='12.5' r='1.4' fill='%2310b981'/%3E%3Ccircle cx='28' cy='15.5' r='1.4' fill='%2310b981'/%3E%3Ccircle cx='12' cy='24.5' r='1.4' fill='%2310b981'/%3E%3Ccircle cx='16' cy='27.5' r='1.4' fill='%2310b981'/%3E%3Ccircle cx='14' cy='14' r='1.4' fill='%23cbd5e1'/%3E%3Ccircle cx='26' cy='26' r='1.4' fill='%23cbd5e1'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="/fonts/fonts.css">
 <link rel="preload" href="/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/dm-sans-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -392,6 +390,24 @@ select.field { cursor:pointer; padding-right:2rem; appearance:none; -webkit-appe
   .tw:has(.res-t) { border:0; }
 }
 
+/* Gsm: non-respons compact, status gestapeld */
+.nr-t .sig { margin-left:0.25rem; }
+@media (max-width:640px) {
+  .t.kop-wrap th { min-width:0; }
+  .nr-t th, .nr-t td { padding-left:0.375rem; padding-right:0.375rem; }
+  .nr-t td:first-child { white-space:normal; padding-left:0.625rem; }
+  .nr-t .sig { margin:0.125rem 0 0; }
+  .nr-t th:nth-child(4), .nr-t td:nth-child(4) { display:none; }   /* respons: af te lezen uit de twee aantallen */
+  .st-t thead { display:none; }
+  .st-t, .st-t tbody { display:block; width:100%; }
+  .st-t tr { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:0.25rem 0.75rem; align-items:center; padding:0.5rem 0.625rem; border-bottom:1px solid var(--slate-100); }
+  .st-t tr:last-child { border-bottom:0; }
+  .st-t td { display:block; border:0; padding:0; }
+  .st-t td:nth-child(2) { color:var(--slate-500); font-size:0.8125rem; }
+  .st-t td:nth-child(2)::after { content:' rijen'; }
+  .st-t td:nth-child(3) { grid-column:1 / -1; }
+}
+
 /* Gsm */
 @media (max-width:640px) {
   .header .back-link { position:static; display:flex; justify-content:center; margin:0 auto 0.75rem; width:max-content; }
@@ -427,10 +443,7 @@ body { min-height:100dvh; }
     <span>Stats &amp; Co</span>
   </a>
   <div class="logo">
-    <svg viewBox="0 0 80 80" fill="none" aria-hidden="true">
-      <circle cx="40" cy="40" r="36" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
-      <g transform="scale(2)"><circle cx="11.5" cy="13" r="2.6" stroke="#94a3b8" stroke-width="1.3"/><circle cx="17.2" cy="13" r="2.6" fill="#10b981"/><circle cx="22.9" cy="13" r="2.6" stroke="#94a3b8" stroke-width="1.3"/><circle cx="28.6" cy="13" r="2.6" stroke="#94a3b8" stroke-width="1.3"/><circle cx="11.5" cy="20" r="2.6" stroke="#94a3b8" stroke-width="1.3"/><circle cx="17.2" cy="20" r="2.6" stroke="#94a3b8" stroke-width="1.3"/><circle cx="22.9" cy="20" r="2.6" stroke="#94a3b8" stroke-width="1.3"/><circle cx="28.6" cy="20" r="2.6" fill="#10b981"/><circle cx="11.5" cy="27" r="2.6" fill="#10b981"/><circle cx="17.2" cy="27" r="2.6" stroke="#94a3b8" stroke-width="1.3"/><circle cx="22.9" cy="27" r="2.6" fill="#047857"/><circle cx="28.6" cy="27" r="2.6" stroke="#94a3b8" stroke-width="1.3"/></g>
-    </svg>
+    <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/><rect x="9" y="9" width="10" height="10" rx="2.5" fill="#f1f5f9" stroke="#cbd5e1"/><rect x="21" y="9" width="10" height="10" rx="2.5" fill="#d1fae5" stroke="#10b981"/><rect x="9" y="21" width="10" height="10" rx="2.5" fill="#d1fae5" stroke="#10b981"/><rect x="21" y="21" width="10" height="10" rx="2.5" fill="#f1f5f9" stroke="#cbd5e1"/><circle cx="24" cy="12.5" r="1.4" fill="#10b981"/><circle cx="28" cy="15.5" r="1.4" fill="#10b981"/><circle cx="12" cy="24.5" r="1.4" fill="#10b981"/><circle cx="16" cy="27.5" r="1.4" fill="#10b981"/><circle cx="14" cy="14" r="1.4" fill="#cbd5e1"/><circle cx="26" cy="26" r="1.4" fill="#cbd5e1"/></svg>
   </div>
   <h1 class="title">Steekproef</h1>
   <p class="subtitle">Trek een eerlijke steekproef, weeg de antwoorden en zie hoe zeker je resultaat is.</p>
@@ -517,7 +530,7 @@ body { min-height:100dvh; }
    Alles gebeurt lokaal. Geen afhankelijkheden. Werkt in de browser (window.Kern) en in Node (module.exports). */
 (function (root) {
 'use strict';
-const VERSIE = '1.0';
+const VERSIE = '1.1';
 
 /* ---------------- Toeval met startgetal ----------------
    Zaaien met een eenvoudige mengfunctie (32 bit), daarna een snelle generator met 128 bit toestand.
@@ -563,7 +576,9 @@ function getal(v) {
   if (v == null || typeof v === 'boolean') return NaN;
   let t = String(v).trim().replace(/\s/g, '');
   if (t === '') return NaN;
-  if (/^[-+]?\d{1,3}(\.\d{3})+(,\d+)?$/.test(t)) t = t.replace(/\./g, '').replace(',', '.');   // 1.234,5
+  // Punt als duizendtal alleen als het ondubbelzinnig is: meerdere groepen (1.234.567) of samen met een komma (1.234,5).
+  // Eén punt (0.822, 2.036) is een decimale punt.
+  if (/^[-+]?\d{1,3}(\.\d{3}){2,}(,\d+)?$/.test(t) || /^[-+]?\d{1,3}(\.\d{3})+,\d+$/.test(t)) t = t.replace(/\./g, '').replace(',', '.');
   else if (/^[-+]?\d*,\d+$/.test(t)) t = t.replace(',', '.');                                     // 1,5
   else if (/^[-+]?\d{1,3}(,\d{3})+\.\d+$/.test(t)) t = t.replace(/,/g, '');                      // 1,234.5
   const x = Number(t);
@@ -1324,10 +1339,13 @@ function load() {
   try {
     const s = JSON.parse(localStorage.getItem(KEY) || 'null');
     if (s && typeof s === 'object') {
-      for (const k of Object.keys(d)) if (s[k] !== undefined) d[k] = (d[k] && typeof d[k] === 'object' && !Array.isArray(d[k]) && s[k] && typeof s[k] === 'object' && !Array.isArray(s[k])) ? Object.assign(d[k], s[k]) : s[k];
+      const obj = x => !!x && typeof x === 'object' && !Array.isArray(x);
+      // Een onderdeel dat een object hoort te zijn, maar kapot is (bv. null), blijft op de standaard staan.
+      for (const k of Object.keys(d)) if (s[k] !== undefined) { if (obj(d[k])) { if (obj(s[k])) Object.assign(d[k], s[k]); } else d[k] = s[k]; }
       if (![1, 2, 3, 4].includes(d.stap)) d.stap = 1;
       if (!['voorbeeld', 'eigen', 'analyse', null].includes(d.modus)) d.modus = null;
       if (!Array.isArray(d.oph.indelingen) || !d.oph.indelingen.length) { d.oph.indelingen = [{ a:'', b:'' }]; d.oph.totalen = [{}]; }
+      if (!Array.isArray(d.oph.totalen)) d.oph.totalen = [];
       while (d.oph.totalen.length < d.oph.indelingen.length) d.oph.totalen.push({});
       if (!Array.isArray(d.schat.kol)) d.schat.kol = [];
     }
@@ -1606,12 +1624,30 @@ async function leesCSV(text, sep, voortgang) {
   const N = goed.length - 1, cols = {};
   kolommen.forEach((k, c) => { const a = new Array(N); for (let r = 0; r < N; r++) { const v = goed[r + 1][c]; a[r] = v == null ? '' : v.trim(); } cols[k] = a; });
   if (!N) throw new Error('Het bestand heeft een kop, maar geen rijen.');
-  return { kolommen, cols, N };
+  // Getallen met een decimale punt (bv. 0.822 uit andere software) zet de tool om naar een decimale komma.
+  // De rekenkern leest een punt met drie cijfers erna als duizendtal (1.234 = 1234); zonder omzetting werd 0.822 dus 822.
+  const punt = kolommen.filter(k => decimalePunt(cols[k], sep));
+  for (const k of punt) cols[k] = cols[k].map(v => /^[-+]?\d*\.\d+$/.test(v) ? v.replace('.', ',') : /^[-+]?\d*\.?\d+[eE][-+]?\d+$/.test(v) ? String(Number(v)).replace('.', ',') : v);
+  return { kolommen, cols, N, punt };
 }
+// Een kolom gebruikt een decimale punt als alle waarden getallen zijn, er geen komma in voorkomt,
+// en minstens één waarde ondubbelzinnig een decimale punt heeft (0.8, 2.5, 12.3456, of het bestand is met komma's gescheiden).
+function decimalePunt(a, sep) {
+  let punt = false;
+  for (const v of a) {
+    if (v === '') continue;
+    if (/^[-+]?\d*\.\d+([eE][-+]?\d+)?$/.test(v)) { const [i, d] = v.replace(/^[-+]/, '').split('.'); if (sep === ',' || /^0?$/.test(i) || i.length > 3 || d.replace(/[eE].*$/, '').length !== 3) punt = true; }
+    else if (!/^[-+]?\d+([eE][-+]?\d+)?$/.test(v)) return false;
+  }
+  return punt;
+}
+const EXCEL = 'Dit is een Excel-bestand of een ander werkblad, geen CSV. Open het in Excel en kies Bestand, Opslaan als, en dan CSV. Lees dat bestand hier in.';
 async function bestandNaarTabel(file, sep, wat) {
   R.laden = { wat, deel:0 }; renderPaneel();
   try {
+    if (/\.(xlsx|xlsm|xls|ods|numbers)$/i.test(file.name)) throw new Error(EXCEL);
     const text = await file.text();
+    if (text.startsWith('PK\u0003\u0004') || text.slice(0, 2000).includes('\u0000')) throw new Error(EXCEL);
     const s = sep === 'auto' ? raadScheiding(text) : sep;
     const t = await leesCSV(text, s, f => { R.laden.deel = f; const b = $('laad-balk'); if (b) { b.style.width = Math.round(f * 100) + '%'; $('laad-txt').textContent = 'Inlezen… ' + Math.round(f * 100) + '%'; } });
     t.naam = file.name; t.scheiding = s; t.file = file;
@@ -1623,7 +1659,7 @@ async function bestandNaarTabel(file, sep, wat) {
 async function kiesKader(file) {
   try {
     const t = await bestandNaarTabel(file, state.scheiding, 'kader');
-    R.pop = t; R.steek = null; R.steekRijen = null; R.ant = null; R.weeg = null; state.getrokken = false; state.steek = null;
+    R.fout.kader = null; R.pop = t; R.steek = null; R.steekRijen = null; R.ant = null; R.weeg = null; state.getrokken = false; state.steek = null;
     state.bestand = { naam:t.naam, rijen:t.N, kolommen:t.kolommen.length };
     for (const r of ['laag', 'cluster', 'sorteer', 'hulp']) if (state.kol[r] && !t.kolommen.includes(state.kol[r])) state.kol[r] = '';
     save(); render(); toast(`${nf(t.N)} rijen ingelezen`);
@@ -1632,6 +1668,8 @@ async function kiesKader(file) {
 function controles() {
   const P = R.pop, uit = [];
   uit.push({ ok:true, t:`${plural(P.N, 'rij', 'rijen')} en ${plural(P.kolommen.length, 'kolom', 'kolommen')}.` });
+  if (P.kolommen.length === 1) uit.push({ ok:false, t:'Ik vind maar één kolom. Kies hierboven een andere scheiding tussen de kolommen.' });
+  if (P.punt && P.punt.length) uit.push({ ok:true, t:`Getallen met een decimale punt gelezen in: ${P.punt.join(', ')}.` });
   const g = state.kol.laag, c = state.kol.cluster, h = state.kol.hulp;
   const legen = k => P.cols[k].reduce((n, v) => n + (v === '' ? 1 : 0), 0);
   if (g) { const n = legen(g), w = new Set(P.cols[g]).size; uit.push(n ? { ok:false, t:`Groep: ${plural(n, 'rij heeft', 'rijen hebben')} geen waarde. Die vormen samen een eigen groep.` } : { ok:true, t:`Groep: ${plural(w, 'groep', 'groepen')}, geen lege waarden.` }); }
@@ -1774,7 +1812,7 @@ function ontwerpRegels() {
     if (g) uit.push(['Verdeling van de clusters', { evenredig:'evenredig', gelijk:'gelijk', eigen:'zelf gekozen' }[o.clusterVerdeling]]);
     if (o.clusterKeuze === 'grootte') uit.push(['Volgorde van de clusters', o.clusterVolgorde === 'kader' ? 'zoals in het bestand' : 'toevallig']);
   }
-  uit.push(['Grootte van de populatie in de foutmarge', o.eindig ? 'ja' : 'nee']);
+  uit.push(['Grootte van de populatie in de foutmarge', (o.trappen === 2 && o.clusterKeuze === 'grootte') ? 'enkel voor zeker gekozen clusters (de andere: berekend met teruglegging)' : (o.eindig ? 'ja' : 'nee')]);
   uit.push(['Startgetal', String(R.steek ? R.steek.startgetal : state.startgetal)]);
   uit.push(['Versie van de rekenkern', R.steek ? R.steek.versie : Kern.VERSIE]);
   return uit;
@@ -1853,7 +1891,7 @@ function seg(pad, opties, waarde, label, uit = {}) {
 }
 function veld(pad, waarde, label, eenheid, extra = '') {
   const id = 'in-' + pad.replace(/\W/g, '-');
-  return `<label class="veld" for="${id}"><span class="lbl">${label}</span><span class="unit-wrap"><input class="field num" id="${id}" data-in="${pad}" inputmode="decimal" autocomplete="off" value="${esc(waarde)}"${extra}>${eenheid ? `<span class="u">${eenheid}</span>` : ''}</span></label>`;
+  return `<label class="veld" for="${id}"><span class="lbl">${label}</span><span class="unit-wrap"><input class="field num" id="${id}" data-in="${pad}" inputmode="decimal" autocomplete="off" value="${esc(waarde)}"${eenheid ? ` style="padding-right:${(1.25 + 0.5 * eenheid.length).toFixed(2)}rem"` : ''}${extra}>${eenheid ? `<span class="u">${eenheid}</span>` : ''}</span></label>`;
 }
 function kolKeuze(pad, waarde, label, hint, kolommen, leegTekst = 'Geen') {
   const id = 'kk-' + pad.replace(/\W/g, '-');
@@ -1884,6 +1922,8 @@ function voorproef(t, max = 5) {
   return `<div class="tw" tabindex="0" role="region" aria-label="Eerste rijen van je bestand"><table class="t klein"><thead><tr>${t.kolommen.map(k => `<th>${esc(k)}</th>`).join('')}</tr></thead><tbody>${Array.from({ length:Math.min(max, t.N) }, (_, r) => `<tr>${t.kolommen.map(k => `<td>${esc(t.cols[k][r])}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
 }
 
+const scheidingKeuze = () => `<label class="veld" for="sep"><span class="lbl">Scheiding tussen de kolommen</span><select class="field" id="sep" data-sel="scheiding">${[['auto', 'Automatisch'], [';', 'Puntkomma ;'], [',', 'Komma ,'], ['\t', 'Tab']].map(([v, t]) => `<option value="${esc(v)}"${state.scheiding === v ? ' selected' : ''}>${t}</option>`).join('')}</select></label>`;
+const puntTekst = t => t.punt && t.punt.length ? ' · decimale punt gelezen in ' + esc(t.punt.join(', ')) : '';
 /* ---------- Stap 1 ---------- */
 function paneel1() {
   if (state.modus === 'voorbeeld') {
@@ -1911,13 +1951,14 @@ function paneel1() {
     if (state.bestand && !R.laden) h += melding(`Je werkte met ${state.bestand.naam} (${nf(state.bestand.rijen)} rijen). Lees het opnieuw in om verder te trekken. Grote bestanden bewaart de tool niet.${R.steek ? ' De getrokken steekproef staat wel nog klaar in stap 2.' : ''}`, 'info');
     h += R.laden ? laadBalk() : bestandKeuze('kader-in', 'Kies je bestand (CSV)');
     h += melding(R.fout.kader);
-    h += `<div class="rij2"><label class="veld" for="sep"><span class="lbl">Scheiding tussen de kolommen</span><select class="field" id="sep" data-sel="scheiding">${[['auto', 'Automatisch'], [';', 'Puntkomma ;'], [',', 'Komma ,'], ['\t', 'Tab']].map(([v, t]) => `<option value="${esc(v)}"${state.scheiding === v ? ' selected' : ''}>${t}</option>`).join('')}</select></label>
+    h += `<div class="rij2">${scheidingKeuze()}
       <p class="hint tip"><b>Werk je in Excel?</b> Kies Bestand, Opslaan als, en dan CSV. De eerste rij bevat de namen van de kolommen. Decimale komma's en aanhalingstekens lukken.</p></div>`;
     return h + '</section>';
   }
   const kol = P.kolommen;
   h += `<div class="bestand-rij"><span><b>${esc(P.naam)}</b> · ${nf(P.N)} rijen · ${kol.length} kolommen · gescheiden door ${P.scheiding === '\t' ? 'tab' : P.scheiding === ';' ? 'puntkomma' : 'komma'}</span><button type="button" class="btn-s" data-kies="kader-in">${icoon.up}Ander bestand</button><input type="file" id="kader-in" accept=".csv,.txt,text/csv" hidden></div>
     ${R.laden ? laadBalk() : ''}
+    ${kol.length === 1 ? `<div class="rooster r2">${scheidingKeuze()}</div>` : ''}
     <h3 class="sub">Eerste rijen</h3>${voorproef(P)}
     <h3 class="sub">Kolommen aanduiden <small>alles is optioneel</small></h3>
     <div class="rooster">
@@ -2007,19 +2048,38 @@ function groepTabel(gr, sleutel, kop, eenheid, clusters) {
   const o = state.ontwerp;
   return `<div class="tw" tabindex="0" role="region" aria-label="${esc(kop)} per groep"><table class="t invul"><thead><tr><th>Groep</th><th class="r">${clusters ? 'Clusters in de groep' : wie()[0].toUpperCase() + wie().slice(1) + ' in de groep'}</th><th class="r">${esc(kop)}</th></tr></thead><tbody>${gr.map((g, k) => `<tr><td>${esc(g.naam || '(leeg)')}</td><td class="r">${nf(clusters ? g.K : g.N)}</td><td class="r"><input class="field num mini" id="gt-${sleutel}-${k}" data-groep="${sleutel}" data-g="${esc(g.naam)}" inputmode="decimal" autocomplete="off" aria-label="${esc(kop)} voor ${esc(g.naam)}" value="${esc(o[sleutel][g.naam] == null ? '' : o[sleutel][g.naam])}" placeholder="${esc(eenheid || '')}"></td></tr>`).join('')}</tbody></table></div>`;
 }
+// Dezelfde opmerking voor meerdere groepen wordt één zin ("In alle 5 groepen trek je 24% van de clusters ...").
+const enLijst = a => a.length < 2 ? a.join('') : a.slice(0, -1).join(', ') + ' en ' + a[a.length - 1];
+function opmerkingen(s) {
+  const re = /^In (.+?) trek je (\d+)% van de clusters\. (.+)$/, groep = new Map(), uit = [];
+  for (const w of s.waarschuwingen) {
+    const m = w.match(re);
+    if (!m) { uit.push(w); continue; }
+    let g = groep.get(m[3]); if (!g) { groep.set(m[3], g = []); uit.push(g); }
+    g.push([m[1], m[2]]);
+  }
+  return uit.map(x => {
+    if (typeof x === 'string') return x;
+    const [tail] = [...groep.entries()].find(([, g]) => g === x);
+    if (x.length === 1) return `In ${x[0][0]} trek je ${x[0][1]}% van de clusters. ${tail}`;
+    const pct = new Set(x.map(y => y[1])), wie = x.length === s.perLaag.length ? `alle ${x.length} groepen` : enLijst(x.map(y => y[0]));
+    return pct.size === 1 ? `In ${wie} trek je ${x[0][1]}% van de clusters. ${tail}` : `In ${enLijst(x.map(y => `${y[0]} (${y[1]}%)`))} trek je een groot deel van de clusters. ${tail}`;
+  });
+}
 function resultaatTrek() {
   const s = R.steek, twee = s.ontwerp.trappen === 2, vb = state.modus === 'voorbeeld';
   const nCl = twee ? s.perLaag.reduce((a, x) => a + x.clusters, 0) : 0;
   const zeker = twee ? s.perLaag.reduce((a, x) => a + (x.zeker || 0), 0) : 0;
-  const rows = s.perLaag.map(x => { const k = kansBereik(x.laag); return `<tr><td>${esc(x.laag || 'Iedereen')}</td><td class="r">${nf(x.N)}</td>${twee ? `<td class="r">${x.clusters} van ${x.clustersInLaag}</td>` : ''}<td class="r"><b>${nf(x.n)}</b></td><td class="r nw">${k.kans}</td><td class="r nw">${k.gewicht}</td></tr>`; }).join('');
+  const rows = s.perLaag.map(x => { const k = kansBereik(x.laag); return `<tr><td class="rt-wat">${esc(x.laag || 'Iedereen')}</td><td class="r" data-l="In de populatie">${nf(x.N)}</td>${twee ? `<td class="r nw" data-l="Clusters">${x.clusters} van ${x.clustersInLaag}</td>` : ''}<td class="r" data-l="Gekozen"><b>${nf(x.n)}</b></td><td class="r nw" data-l="Kans om gekozen te worden">${k.kans}</td><td class="r nw" data-l="Gewicht: telt voor">${k.gewicht}</td></tr>`; }).join('');
   const k0 = kansBereik(s.perLaag[0].laag);
   let h = `<section class="card stap-kaart res" aria-labelledby="h2r"><div class="sk-head"><h2 class="sk-titel" id="h2r">De steekproef</h2></div>
     <p class="lead" aria-live="polite"><b>${nf(s.n)}</b> ${wie()} gekozen uit ${nf(s.N)}${twee ? `, in ${plural(nCl, 'cluster', 'clusters')}` : ''}. Startgetal ${esc(s.startgetal)}.</p>
-    <div class="tw" tabindex="0" role="region" aria-label="Resultaat per groep"><table class="t kop-wrap"><thead><tr><th>Groep</th><th class="r">In de populatie</th>${twee ? '<th class="r">Clusters</th>' : ''}<th class="r">Gekozen</th><th class="r">Kans om gekozen te worden</th><th class="r">Gewicht: telt voor</th></tr></thead><tbody>${rows}</tbody></table></div>
+    <div class="tw" tabindex="0" role="region" aria-label="Resultaat per groep"><table class="t kop-wrap res-t"><thead><tr><th>Groep</th><th class="r">In de populatie</th>${twee ? '<th class="r">Clusters</th>' : ''}<th class="r">Gekozen</th><th class="r">Kans om gekozen te worden</th><th class="r">Gewicht: telt voor</th></tr></thead><tbody>${rows}</tbody></table></div>
     <p class="hint">${k0.gelijk ? `Bijvoorbeeld: elk antwoord uit ${esc(s.perLaag[0].laag || 'de steekproef')} telt voor ${k0.gewicht} ${wie()}.` : `De kans verschilt binnen een groep, omdat clusters verschillen in grootte. Het gewicht volgt die kans.`}</p>`;
   if (zeker) h += melding(`${zeker === 1 ? 'Eén cluster is' : nf(zeker) + ' clusters zijn'} zo groot dat ${zeker === 1 ? 'het' : 'ze'} zeker gekozen ${zeker === 1 ? 'wordt' : 'worden'} (kans 1). ${zeker === 1 ? 'Dat cluster telt' : 'Die clusters tellen'} voor de foutmarge als een eigen groep.`, 'info');
-  if (s.waarschuwingen.length === 1) h += melding(s.waarschuwingen[0]);
-  else if (s.waarschuwingen.length) h += `<details class="mld warn mld-d"${openUitleg.opm ? ' open' : ''} id="d-opm"><summary><span class="mld-i" aria-hidden="true">!</span><b>${s.waarschuwingen.length} opmerkingen bij deze trekking</b></summary><ul class="mld-l">${s.waarschuwingen.map(w => `<li>${esc(w)}</li>`).join('')}</ul></details>`;
+  const opm = opmerkingen(s);
+  if (opm.length === 1) h += melding(opm[0]);
+  else if (opm.length) h += `<details class="mld warn mld-d"${openUitleg.opm ? ' open' : ''} id="d-opm"><summary><span class="mld-i" aria-hidden="true">!</span><b>${opm.length} opmerkingen bij deze trekking</b></summary><ul class="mld-l">${opm.map(w => `<li>${esc(w)}</li>`).join('')}</ul></details>`;
   if (vb && R.pop) h += kaartGemeenten();
   h += `<div class="acties"><button type="button" class="btn-s" data-act="dl-steek">${icoon.dl}Download steekproef (CSV)</button><button type="button" class="btn-s" data-act="fiche">${icoon.pdf}Ontwerpfiche (PDF)</button></div>`;
   if (state.modus === 'eigen') h += `<p class="hint">Het bestand heeft een lege kolom <b>status</b>. Vul daar per rij in wie antwoordde (bv. ja, nee, buiten doelgroep) en zet de antwoorden in extra kolommen. Laat de kolommen kans, gewicht en ontwerp ongemoeid. Lees het daarna in bij stap 3.</p>${state.steek ? '' : '<p class="hint">Deze steekproef is te groot om te bewaren op je toestel. Download ze nu.</p>'}`;
@@ -2063,9 +2123,9 @@ function paneel3() {
       h += `<p class="hint">Gebruik het bestand dat je bij stap 2 downloadde. Vul de kolom status in en voeg je antwoorden toe als extra kolommen. De ontwerpkolommen worden vanzelf herkend.</p>`;
     } else {
       const t = R.antTabel, sw = statusWaarden();
-      h += `<div class="bestand-rij"><span><b>${esc(t.naam)}</b> · ${nf(t.N)} rijen · ontwerpkolommen herkend</span><button type="button" class="btn-s" data-kies="ant-in">${icoon.up}Ander bestand</button><input type="file" id="ant-in" accept=".csv,.txt,text/csv" hidden></div>
+      h += `<div class="bestand-rij"><span><b>${esc(t.naam)}</b> · ${nf(t.N)} rijen · ontwerpkolommen herkend${puntTekst(t)}</span><button type="button" class="btn-s" data-kies="ant-in">${icoon.up}Ander bestand</button><input type="file" id="ant-in" accept=".csv,.txt,text/csv" hidden></div>
         <div class="rooster r2">${kolKeuze('status.kol', state.status.kol, 'Kolom met de status', '', t.kolommen.filter(k => !ONTWERP_KOL.includes(k)), 'Kies een kolom')}</div>`;
-      if (state.status.kol && sw.length <= 30) h += `<div class="tw" tabindex="0" role="region" aria-label="Status toewijzen"><table class="t invul"><thead><tr><th>Waarde in je bestand</th><th class="r">Rijen</th><th>Betekent</th></tr></thead><tbody>${sw.map(([v, n], k) => `<tr><td>${v === '' ? '<span class="muted">(leeg)</span>' : esc(v)}</td><td class="r">${nf(n)}</td><td><select class="field" id="st-${k}" data-status="${esc(v)}" aria-label="Betekenis van ${esc(v || 'leeg')}">${[['ja', 'antwoordde'], ['nee', 'antwoordde niet'], ['buiten', 'hoort niet bij de doelgroep']].map(([x, l]) => `<option value="${x}"${(state.status.map[v] || raadStatus(v)) === x ? ' selected' : ''}>${l}</option>`).join('')}</select></td></tr>`).join('')}</tbody></table></div>`;
+      if (state.status.kol && sw.length <= 30) h += `<div class="tw" tabindex="0" role="region" aria-label="Status toewijzen"><table class="t invul st-t"><thead><tr><th>Waarde in je bestand</th><th class="r">Rijen</th><th>Betekent</th></tr></thead><tbody>${sw.map(([v, n], k) => `<tr><td>${v === '' ? '<span class="muted">(leeg)</span>' : esc(v)}</td><td class="r">${nf(n)}</td><td><select class="field" id="st-${k}" data-status="${esc(v)}" aria-label="Betekenis van ${esc(v || 'leeg')}">${[['ja', 'antwoordde'], ['nee', 'antwoordde niet'], ['buiten', 'hoort niet bij de doelgroep']].map(([x, l]) => `<option value="${x}"${(state.status.map[v] || raadStatus(v)) === x ? ' selected' : ''}>${l}</option>`).join('')}</select></td></tr>`).join('')}</tbody></table></div>`;
     }
     h += melding(R.fout.ant) + '</div>';
   } else {
@@ -2076,12 +2136,13 @@ function paneel3() {
       h += '<p class="hint">Een bestand met één rij per antwoord en een kolom met het gewicht, bijvoorbeeld uit een andere bevraging.</p>';
     } else {
       const t = R.antTabel, k = t.kolommen;
-      h += `<div class="bestand-rij"><span><b>${esc(t.naam)}</b> · ${nf(t.N)} rijen</span><button type="button" class="btn-s" data-kies="ant-in">${icoon.up}Ander bestand</button><input type="file" id="ant-in" accept=".csv,.txt,text/csv" hidden></div>
+      h += `<div class="bestand-rij"><span><b>${esc(t.naam)}</b> · ${nf(t.N)} rijen${puntTekst(t)}</span><button type="button" class="btn-s" data-kies="ant-in">${icoon.up}Ander bestand</button><input type="file" id="ant-in" accept=".csv,.txt,text/csv" hidden></div>
         ${voorproef(t, 3)}
         <div class="rooster">${kolKeuze('analyse.gewicht', state.analyse.gewicht, 'Gewicht', 'Voor hoeveel eenheden elk antwoord telt.', k, 'Kies een kolom')}
         ${kolKeuze('analyse.laag', state.analyse.laag, 'Groepen (strata)', 'Optioneel.', k)}
         ${kolKeuze('analyse.cluster', state.analyse.cluster, 'Clusters', 'Optioneel. De eerste trap.', k)}
         ${kolKeuze('analyse.N1', state.analyse.N1, 'Aantal in de populatie of trekkingsfractie', 'Optioneel. Per groep: het aantal clusters (of eenheden als je geen clusters hebt) in de populatie, of het deel dat getrokken werd, bv. 0,05. Leeg: de foutmarge wordt iets voorzichtiger.', k)}</div>
+        ${R.ant && !state.analyse.cluster ? melding('Geen kolom voor clusters gekozen: de tool rekent alsof elk antwoord los en aselect getrokken werd. Kwam je steekproef uit clusters (bv. scholen of gemeenten), dan is de foutmarge zo te klein.', 'info') : ''}
         ${R.analyseWeg && R.ant ? melding(`${plural(R.analyseWeg, 'rij heeft', 'rijen hebben')} geen geldig gewicht en ${R.analyseWeg === 1 ? 'telt' : 'tellen'} niet mee.`) : ''}`;
     }
     h += melding(R.fout.ant) + '</div>';
@@ -2096,10 +2157,10 @@ function paneel3() {
       ${kl.length ? '' : '<p class="hint">Geen klasse gekozen: één correctie voor iedereen samen.</p>'}`;
     if (W.fout) h += melding(W.fout);
     else if (W.klassen) {
-      h += `<div class="tw" tabindex="0" role="region" aria-label="Non-respons per klasse"><table class="t"><thead><tr><th>Klasse</th><th class="r">Aangeschreven</th><th class="r">Antwoorden</th><th class="r">Respons</th><th class="r">Factor</th><th></th></tr></thead><tbody>${W.klassen.map(x => {
+      h += `<div class="tw" tabindex="0" role="region" aria-label="Non-respons per klasse"><table class="t kop-wrap nr-t"><thead><tr><th>Klasse</th><th class="r">Aange&shy;schreven</th><th class="r">Antwoorden</th><th class="r">Respons</th><th class="r">Factor</th></tr></thead><tbody>${W.klassen.map(x => {
         const sig = x.ja < 20 ? 'weinig antwoorden' : x.factor > 2 ? 'grote factor' : '';
-        return `<tr${sig ? ' class="let"' : ''}><td>${esc(x.klasse || 'Iedereen')}</td><td class="r">${nf(x.ja + x.nee)}</td><td class="r">${nf(x.ja)}</td><td class="r">${pct(x.ja / (x.ja + x.nee), 0)}</td><td class="r"><b>${nf(x.factor, 2)}</b></td><td>${sig ? `<span class="sig">${sig}</span>` : ''}</td></tr>`; }).join('')}</tbody></table></div>
-        <p class="hint">De factor zegt hoeveel zwaarder een antwoord gaat tellen. Minder dan 20 antwoorden of een factor boven 2: overweeg klassen samen te voegen.</p>`;
+        return `<tr${sig ? ' class="let"' : ''}><td>${esc(x.klasse || 'Iedereen')}${sig ? ` <span class="sig">${sig}</span>` : ''}</td><td class="r">${nf(x.ja + x.nee)}</td><td class="r">${nf(x.ja)}</td><td class="r">${pct(x.ja / (x.ja + x.nee), 0)}</td><td class="r"><b>${nf(x.factor, 2)}</b></td></tr>`; }).join('')}</tbody></table></div>
+        <p class="hint">De factor zegt hoeveel zwaarder een antwoord gaat tellen. Minder dan 20 antwoorden in een klasse: kies minder kenmerken, dan worden de klassen groter. Een factor boven 2 is geen fout, maar dan weegt één antwoord zwaar door.</p>`;
     }
     h += '</div>';
   }
@@ -2118,6 +2179,7 @@ function paneel3() {
         const cats = categorieen(ind), tot = state.oph.totalen[v] || {};
         let som = 0; cats.forEach(c => { const n = telIn(tot[c]); if (Number.isFinite(n)) som += n; });
         h += `<div class="tw" tabindex="0" role="region" aria-label="Totalen voor indeling ${v + 1}"><table class="t invul"><thead><tr><th>Categorie</th><th class="r">Totaal in de populatie</th></tr></thead><tbody>${cats.map((c, k) => `<tr><td>${esc(c)}</td><td class="r"><input class="field num mini wide" id="tot-${v}-${k}" data-tot="${v}" data-cat="${esc(c)}" data-k="${k}" inputmode="numeric" autocomplete="off" aria-label="Totaal voor ${esc(c)}" value="${esc(tot[c] == null ? '' : tot[c])}"></td></tr>`).join('')}</tbody><tfoot><tr><td>Samen</td><td class="r">${nf(som)}</td></tr></tfoot></table></div>`;
+        if (state.modus === 'eigen' && R.pop && R.pop.cols[ind.a] && (!ind.b || R.pop.cols[ind.b])) h += `<div class="acties"><button type="button" class="btn-s" data-act="tot-kader" data-v="${v}">Neem de aantallen over uit je kader</button></div><p class="hint">Dat zijn de aantallen in ${esc(R.pop.naam)}. Wie niet meer bij de doelgroep hoort, telt daar nog mee. Ken je betere totalen, vul die dan in.</p>`;
       }
       h += '</div>';
     });
@@ -2187,7 +2249,12 @@ function histogram(v, { label, fmt, lijn, as }) {
 function paneel4() {
   const A = R.ant, W = R.weeg, vb = state.modus === 'voorbeeld';
   const kols = A.kolommen.filter(kanSchatten);
-  if (!state.schat.kol.length && !state._kolGekozen) { state.schat.kol = vb ? ['sport', 'vrijwilliger'] : kols.filter(k => !['laag', 'cluster', 'sorteer', 'hulp'].some(r => state.kol[r] === k)).slice(0, 2); state._kolGekozen = true; }
+  if (!state.schat.kol.length && !state._kolGekozen) {
+    // Eigen bestand: standaard de antwoorden die je toevoegde (leeg bij wie niet antwoordde), niet de kolommen uit het kader.
+    const kader = kaderKolommen(), antw = A.bron === 'eigen' ? kols.filter(k => !kader.includes(k)) : [];
+    state.schat.kol = vb ? ['sport', 'vrijwilliger'] : antw.length ? antw.slice(0, 3) : kols.filter(k => !['laag', 'cluster', 'sorteer', 'hulp'].some(r => state.kol[r] === k)).slice(0, 2);
+    state._kolGekozen = true;
+  }
   const gek = state.schat.kol.filter(k => kols.includes(k));
   const soortTekst = k => { const s = soortVan(k); return s.t === '01' ? 'ja of nee' : s.t === 'twee' ? 'twee waarden' : s.t === 'getal' ? 'getal' : plural(s.waarden.length, 'waarde', 'waarden'); };
   let h = `<section class="card stap-kaart" aria-labelledby="h4"><div class="sk-head"><h2 class="sk-titel" id="h4">4 · Schatten</h2>${vb ? switchKnop('sw-echt', state.toonEcht, 'Toon de echte waarde') : ''}</div>
@@ -2208,7 +2275,7 @@ function paneel4() {
     }).join('')}</tbody></table></div>
     <p class="hint"><b>Vuistregel:</b> is de foutmarge groot tegenover de schatting (relatieve fout boven 15%), lees dan voorzichtig. Boven 30% is de schatting niet betrouwbaar genoeg om te publiceren. Minder dan 30 antwoorden: ook voorzichtig. Het is een vuistregel, geen wet. pp = procentpunt.</p>
     ${res.some(x => x.r.randInterval) ? '<p class="hint">* Het aandeel is 0% of 100%. Het interval is dan eenzijdig: het loopt van de schatting tot de grens die nog aannemelijk is.</p>' : ''}
-    ${res.some(x => x.r.ontwerpeffectSoort === 'met teruglegging') ? '<p class="hint">Het ontwerpeffect vergelijkt hier met een gewone aselecte steekproef met teruglegging, omdat de grootte van de populatie niet meetelt in de foutmarge.</p>' : ''}
+    ${res.some(x => x.r.ontwerpeffectSoort === 'met teruglegging') ? '<p class="hint">Het ontwerpeffect vergelijkt hier met een gewone aselecte steekproef met teruglegging. De foutmarge rekent hier zonder correctie voor de grootte van de populatie: bij clusters volgens grootte, of als die grootte niet gekend is of niet aangevinkt.</p>' : ''}
     ${(R.weeg.D.meldingen || []).map(t => melding(t, 'info')).join('')}
     <div class="acties"><button type="button" class="btn-s" data-act="pdf">${icoon.pdf}Verslag (PDF)</button><button type="button" class="btn-s" data-act="dl-res">${icoon.dl}Resultaten (CSV)</button></div>`;
   } else h += '<p class="hint">Kies hierboven wat je wil schatten.</p>';
@@ -2297,14 +2364,14 @@ function pPerGroep() {
 function bestandRegels() {
   if (state.modus === 'voorbeeld') return [['Bestand', 'fictieve voorbeeldpopulatie'], ['Rijen', nf(89047)]];
   if (state.modus === 'analyse') return [['Bestand', state.bestand ? state.bestand.naam : ''], ['Rijen', state.bestand ? nf(state.bestand.rijen) : '']];
-  return [['Bestand', state.bestand ? state.bestand.naam : 'niet gekend'], ['Rijen', state.bestand ? nf(state.bestand.rijen) : '']];
+  return [['Bestand', state.bestand ? state.bestand.naam : 'niet gekend'], ['Rijen', state.bestand ? nf(state.bestand.rijen) : ''], ...(state.antBestand && R.ant ? [['Antwoorden uit', state.antBestand.naam]] : [])];
 }
 function bouwFiche() {
   const node = document.createElement('div'), s = R.steek;
   node.innerHTML = `${pKop('Bestand')}${pLijst([['Datum', new Date().toLocaleDateString('nl-BE', { day:'numeric', month:'long', year:'numeric' })], ...bestandRegels()])}
     ${pKop('Keuzes')}${pLijst(ontwerpRegels())}
     ${pKop('Resultaat per groep')}${pPerGroep()}
-    ${s.waarschuwingen.length ? `<div style="font-size:12px;color:#92400e;margin-top:10px">${s.waarschuwingen.map(esc).join('<br>')}</div>` : ''}
+    ${s.waarschuwingen.length ? `<div style="font-size:12px;color:#92400e;margin-top:10px">${opmerkingen(s).map(esc).join('<br>')}</div>` : ''}
     <div style="font-size:12px;color:#64748b;margin-top:16px;line-height:1.5">Met hetzelfde bestand, dezelfde keuzes en hetzelfde startgetal trek je exact dezelfde steekproef.</div>`;
   return { node, title:'Ontwerpfiche', subtitle:`${nf(s.n)} ${wie()} uit ${nf(s.N)} · startgetal ${s.startgetal}` };
 }
@@ -2316,7 +2383,8 @@ function bouwVerslag() {
   h += pKop('Wegen');
   if (A.bron !== 'analyse' && W.klassen) {
     const ja = W.rows.length;
-    h += `<div style="font-size:13px;color:#334155;margin-bottom:8px">${nf(ja)} antwoorden van ${nf(A.status.filter(x => x !== 'buiten').length)} aangeschreven ${wie()} in de doelgroep. Non-respons per klasse: ${esc(klassen().map(naamVan).join(' × ') || 'iedereen samen')}.</div>`;
+    const buiten = A.status.filter(x => x === 'buiten').length;
+    h += `<div style="font-size:13px;color:#334155;margin-bottom:8px">${nf(ja)} antwoorden van ${nf(A.m - buiten)} aangeschreven ${wie()} in de doelgroep${buiten ? ` (${nf(buiten)} hoorden niet bij de doelgroep)` : ''}. Non-respons per klasse: ${esc(klassen().map(naamVan).join(' × ') || 'iedereen samen')}.</div>`;
     h += pTabel(['Klasse', 'Aangeschreven', 'Antwoorden', 'Factor'], W.klassen.map(x => [esc(x.klasse || 'Iedereen'), nf(x.ja + x.nee), nf(x.ja), nf(x.factor, 2)]), [1, 2, 3]);
   }
   if (W.D1) h += `<div style="font-size:13px;color:#334155;margin:10px 0 8px">Opgehoogd naar gekende totalen voor: ${esc(geldigeIndelingen().map(x => naamVan(x.a) + (x.b ? ' × ' + naamVan(x.b) : '')).join(', '))}${W.geconvergeerd ? '. De totalen kloppen' : '. De totalen kloppen nog niet helemaal'} (${plural(W.iteraties, 'ronde', 'rondes')}).</div>`;
@@ -2475,6 +2543,7 @@ paneel.addEventListener('click', e => {
     try { verstuur(); weeg(); say('De vragenlijst is verstuurd.'); } catch (err) { R.fout.resp = err && err.voorGebruiker ? err.message : 'Versturen lukte niet.'; }
     save(); renderBehoud(); return;
   }
+  if (act === 'tot-kader') { vulTotalenUitPopulatie(+b.dataset.v); weeg(); save(); renderBehoud(); toast('Aantallen uit je kader overgenomen'); return; }
   if (act === 'ind-plus') { state.oph.indelingen.push({ a:'', b:'' }); state.oph.totalen.push({}); save(); renderBehoud(); const s = $('ia-' + (state.oph.indelingen.length - 1)); s && s.focus(); return; }
   if (act === 'ind-weg') {
     const v = +b.dataset.v, copy = JSON.parse(JSON.stringify(state.oph));

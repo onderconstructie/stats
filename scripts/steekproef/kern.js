@@ -2,7 +2,7 @@
    Alles gebeurt lokaal. Geen afhankelijkheden. Werkt in de browser (window.Kern) en in Node (module.exports). */
 (function (root) {
 'use strict';
-const VERSIE = '1.0';
+const VERSIE = '1.1';
 
 /* ---------------- Toeval met startgetal ----------------
    Zaaien met een eenvoudige mengfunctie (32 bit), daarna een snelle generator met 128 bit toestand.
@@ -48,7 +48,9 @@ function getal(v) {
   if (v == null || typeof v === 'boolean') return NaN;
   let t = String(v).trim().replace(/\s/g, '');
   if (t === '') return NaN;
-  if (/^[-+]?\d{1,3}(\.\d{3})+(,\d+)?$/.test(t)) t = t.replace(/\./g, '').replace(',', '.');   // 1.234,5
+  // Punt als duizendtal alleen als het ondubbelzinnig is: meerdere groepen (1.234.567) of samen met een komma (1.234,5).
+  // Eén punt (0.822, 2.036) is een decimale punt.
+  if (/^[-+]?\d{1,3}(\.\d{3}){2,}(,\d+)?$/.test(t) || /^[-+]?\d{1,3}(\.\d{3})+,\d+$/.test(t)) t = t.replace(/\./g, '').replace(',', '.');
   else if (/^[-+]?\d*,\d+$/.test(t)) t = t.replace(',', '.');                                     // 1,5
   else if (/^[-+]?\d{1,3}(,\d{3})+\.\d+$/.test(t)) t = t.replace(/,/g, '');                      // 1,234.5
   const x = Number(t);

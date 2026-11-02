@@ -65,4 +65,6 @@ ok(K.toeval('123').uniform() === K.toeval(123).uniform(), 'startgetal als tekst 
 // kadervolgorde
 { const cl = ['z', 'z', 'a', 'a', 'm', 'm', 'b', 'b']; const s = K.trek({ N: 8, cluster: cl }, { trappen: 2, clusters: 2, clusterKeuze: 'grootte', perCluster: 2, clusterVolgorde: 'kader' }, 9);
   ok(s.n === 4, 'kadervolgorde werkt (' + s.n + ' eenheden)'); }
+// decimale punt en komma
+{ const v = ['0.822', '2.036', '1.234.567', '1.234,5', '1,5', '-3,25'].map(K.getal); ok(v.join('|') === '0.822|2.036|1234567|1234.5|1.5|-3.25', 'getallen lezen: ' + v.join(' | ')); }
 console.log(fouten ? fouten + ' FOUTEN' : 'alles in orde'); process.exit(fouten ? 1 : 0);
