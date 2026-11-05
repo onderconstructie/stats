@@ -1800,6 +1800,8 @@ function bouwAnalyse() {
 /* ---------- Downloads ---------- */
 function csvVeld(v) {
   let s = v == null ? '' : typeof v === 'number' ? (Number.isFinite(v) ? String(v).replace('.', ',') : '') : String(v);
+  // Een cel die begint met = + - of @ zou Excel als formule uitvoeren: zet er een ' voor (gewone getallen blijven).
+  if (/^[=+\-@\t\r]/.test(s) && !/^[+-]?\d+([.,]\d+)*%?$/.test(s)) s = "'" + s;
   if (/[;"\n\r]/.test(s)) s = '"' + s.replace(/"/g, '""') + '"';
   return s;
 }
